@@ -1,0 +1,4 @@
+native_id,timestamp,title,severity,source_tool,affected_asset_id,triage_status
+ALT-201,2026-01-05T12:00:00Z,SQL Injection Attempt,HIGH,WAF,AST-101,CLOSED
+ALT-202,2026-99-99T99:99:99Z,Malformed Timestamp Alert,MEDIUM,SIEM,AST-101,UNREVIEWED
+ALT-203,2025-11-15T10:00:00Z,Out of Period Alert,LOW,SIEM,AST-101,CLOSED

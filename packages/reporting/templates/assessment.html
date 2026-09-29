@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assessment Report - {{ entity_id }} ({{ period_start }} to {{ period_end }})</title>
+  <style>
+    /* 100% Offline, Self-Contained Stylesheet with Print Optimization */
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --primary: #1e293b;
+      --accent: #2563eb;
+      --danger: #dc2626;
+      --warning: #d97706;
+      --success: #16a34a;
+      --info: #0284c7;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text);
+      background: var(--bg);
+      padding: 24px;
+    }
+    .report-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      padding: 32px 40px;
+    }
+    .header {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .header .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-substantiated, .badge-critical, .badge-high { background: #fee2e2; color: #991b1b; }
+    .badge-no-concern, .badge-low, .badge-info { background: #dcfce7; color: #166534; }
+    .badge-evidence, .badge-medium { background: #fef3c7; color: #92400e; }
+    .badge-not-applicable { background: #f1f5f9; color: #475569; }
+    .badge-targeted { background: #e0e7ff; color: #3730a3; }
+    .badge-control { background: #fce7f3; color: #9d174d; }
+    .badge-exploratory { background: #fef08a; color: #854d0e; }
+    
+    .disclaimer-banner {
+      background: #eff6ff;
+      border-left: 4px solid var(--accent);
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      border-radius: 0 4px 4px 0;
+      font-size: 12px;
+      color: #1e40af;
+    }
+    
+    .section {
+      margin-bottom: 32px;
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .data-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 16px;
+    }
+    .data-card h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+      font-size: 12px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f1f5f9;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    tr:nth-child(even) {
+      background: #fafafa;
+    }
+    
+    .item-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .item-header {
+      background: #f8fafc;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .item-title {
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .item-body {
+      padding: 12px 14px;
+    }
+    .item-body p {
+      margin-bottom: 8px;
+    }
+    .item-subheading {
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+    
+    .provenance-box {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 12px;
+      border-radius: 4px;
+      overflow-x: auto;
+      word-break: break-all;
+    }
+    
+    .print-button {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .print-button:hover {
+      background: #334155;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #ffffff;
+      }
+      .report-container {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .item-card {
+        page-break-inside: avoid;
+      }
+      tr {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="report-container">
+    <div class="header">
+      <div>
+        <h1>Supervisory SOC Assessment Report</h1>
+        <div class="subtitle">Entity: <strong>{{ entity_id }}</strong> | Assessment Period: {{ period_start }} to {{ period_end }}</div>
+        <div class="subtitle">Run ID: <code>{{ run_id }}</code> | Decision Cutoff: {{ decision_cutoff_time }}</div>
+      </div>
+      <div class="no-print">
+        <button class="print-button" onclick="window.print()">Print / Save PDF</button>
+      </div>
+    </div>
+
+    <div class="disclaimer-banner">
+      <strong>SUPERVISORY ROLE &amp; SCOPE DISCLAIMER:</strong>
+      {{ supervisory_notice }}
+    </div>
+
+    <!-- Section 1: Executive Scope & Data Intake -->
+    <div class="section">
+      <div class="section-title">
+        <span>1. Assessment Scope &amp; Evidence Completeness</span>
+        <span class="badge badge-info">Revision {{ revision }}</span>
+      </div>
+      <div class="grid-2">
+        <div class="data-card">
+          <h3>Submission Intake</h3>
+          <p><strong>Submission ID:</strong> {{ submission_id }}</p>
+          <p><strong>Status:</strong> {{ submission_status }}</p>
+          <p><strong>Source Timezone:</strong> {{ source_timezone }}</p>
+          <p><strong>Validation Issues:</strong> {{ validation_issues_count }}</p>
+        </div>
+        <div class="data-card">
+          <h3>Analytical Baseline</h3>
+          <p><strong>Policy Version:</strong> {{ policy_version }}</p>
+          <p><strong>Rule Version:</strong> {{ rule_version }}</p>
+          <p><strong>Evaluation Seed:</strong> {{ seed }}</p>
+          <p><strong>Completed At:</strong> {{ completed_at }}</p>
+        </div>
+      </div>
+
+      <div class="item-subheading">Submitted Evidence Artifacts</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Filename</th>
+            <th>Type</th>
+            <th>Size (Bytes)</th>
+            <th>Records</th>
+            <th>Server SHA-256 Digest</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ submission_files_rows }}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 2: Machine Analytical Findings -->
+    <div class="section">
+      <div class="section-title">
+        <span>2. Automated Analytical Findings</span>
+        <span>Total Findings: {{ findings_count }}</span>
+      </div>
+      <p style="margin-bottom: 12px; color: var(--text-muted);">
+        The following findings were detected by deterministic rule evaluations and semantic similarity checks. Findings represent evidence-backed automated anomalies requiring examiner adjudication.
+      </p>
+      {{ findings_cards }}
+    </div>
+
+    <!-- Section 3: Examiner Review Portfolio & Selection Methodology -->
+    <div class="section">
+      <div class="section-title">
+        <span>3. Review Portfolio &amp; Stratified Knapsack Selection</span>
+        <span>Portfolio Revision: {{ portfolio_revision }}</span>
+      </div>
+      {{ portfolio_summary_block }}
+      
+      <div class="item-subheading" style="margin-top: 14px;">Selected Review Units (Ranked Order)</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Stratum</th>
+            <th>Unit ID</th>
+            <th>Unit Type</th>
+            <th>Est. Minutes</th>
+            <th>Review Value</th>
+            <th>What Review Establishes / Unknowns</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ portfolio_items_rows }}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 4: Human Examiner Supervisory Decisions -->
+    <div class="section">
+      <div class="section-title">
+        <span>4. Examiner Supervisory Determinations</span>
+        <span>Recorded Decisions: {{ total_decisions_count }}</span>
+      </div>
+      <p style="margin-bottom: 12px; color: var(--text-muted);">
+        The following determinations were recorded by authorized human examiners up to the frozen cutoff time ({{ decision_cutoff_time }}). Later revisions or subsequent determinations are excluded from this snapshot.
+      </p>
+      
+      <div class="item-subheading">Finding Determinations</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Finding ID</th>
+            <th>Determination State</th>
+            <th>Examiner Rationale</th>
+            <th>Cited Evidence Records</th>
+            <th>Reviewer</th>
+            <th>Recorded At (UTC)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ finding_decisions_rows }}
+        </tbody>
+      </table>
+
+      <div class="item-subheading" style="margin-top: 16px;">Control &amp; Exploratory Item Reviews</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Review Item ID</th>
+            <th>Review Outcome</th>
+            <th>Examiner Rationale</th>
+            <th>Cited Evidence Records</th>
+            <th>Reviewer</th>
+            <th>Recorded At (UTC)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ item_decisions_rows }}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 5: Outstanding Local Evidence Requests -->
+    <div class="section">
+      <div class="section-title">
+        <span>5. Outstanding Evidence Requests</span>
+        <span>Pending Requests: {{ evidence_requests_count }}</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Request ID</th>
+            <th>Target</th>
+            <th>Missing Artifact / Distinguishing Question</th>
+            <th>Responsible Owner</th>
+            <th>Due Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ evidence_requests_rows }}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 6: Historical Comparison -->
+    <div class="section">
+      <div class="section-title">
+        <span>6. Comparable Historical Periods</span>
+        <span>{{ trend_status }}</span>
+      </div>
+      {{ prior_runs_block }}
+    </div>
+
+    <!-- Section 7: Cryptographic & Methodological Provenance -->
+    <div class="section">
+      <div class="section-title">
+        <span>7. Cryptographic &amp; Runtime Provenance</span>
+        <span>Schema Version: {{ report_schema_version }}</span>
+      </div>
+      <div class="grid-2">
+        <div class="data-card">
+          <h3>Semantic Encoder Status</h3>
+          <p><strong>Mode:</strong> {{ semantic_mode }}</p>
+          <p><strong>Model:</strong> {{ semantic_model_name }}</p>
+          <p><strong>Manifest Hash:</strong> <code>{{ semantic_manifest_hash }}</code></p>
+          <p><strong>Commit:</strong> <code>{{ semantic_commit }}</code></p>
+        </div>
+        <div class="data-card">
+          <h3>Artifact Integrity</h3>
+          <p><strong>Input Submission Hash:</strong> <code>{{ input_hash }}</code></p>
+          <p><strong>Snapshot Generated At:</strong> {{ snapshot_generated_at }}</p>
+          <p><strong>Decision Cutoff Time:</strong> {{ decision_cutoff_time }}</p>
+        </div>
+      </div>
+      <div class="item-subheading">Verification Digest Manifest</div>
+      <div class="provenance-box">{{ checksum_manifest_preview }}</div>
+    </div>
+  </div>
+</body>
+</html>

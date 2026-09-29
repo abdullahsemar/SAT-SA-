@@ -1,0 +1,4 @@
+native_id,timestamp,title,severity,source_tool,affected_asset_id,triage_status
+ALT-1001,2026-01-05T08:00:00Z,Multiple Failed Authentication Attempts,HIGH,SIEM,AST-002,ESCALATED
+ALT-1002,2026-01-05T08:15:00Z,Suspicious PowerShell Execution,CRITICAL,EDR,AST-001,ESCALATED
+ALT-1003,2026-01-12T14:00:00Z,Anomalous Outbound Data Transfer,MEDIUM,NDR,AST-003,CLOSED

@@ -1,0 +1,18 @@
+[
+  {
+    "native_id": "COV-01",
+    "sensor_name": "Endpoint-CrowdStrike-Agent",
+    "expected_eps": 500.0,
+    "observed_eps": 485.5,
+    "status": "ONLINE",
+    "timestamp": "2026-01-15T12:00:00Z"
+  },
+  {
+    "native_id": "COV-02",
+    "sensor_name": "Network-CoreSwitch-NetFlow",
+    "expected_eps": 2500.0,
+    "observed_eps": 2480.0,
+    "status": "ONLINE",
+    "timestamp": "2026-01-15T12:00:00Z"
+  }
+]

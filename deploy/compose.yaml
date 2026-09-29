@@ -1,0 +1,40 @@
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/containers/Dockerfile.api
+    container_name: sat-sa-api
+    restart: unless-stopped
+    environment:
+      - ENVIRONMENT=production
+      - DATABASE_URL=sqlite:////data/sat_sa.db
+      - STORAGE_DIR=/data/storage
+      - OFFLINE_MODE=true
+    volumes:
+      - sat_sa_data:/data
+    networks:
+      - sat_sa_isolated_net
+    expose:
+      - "8000"
+
+  web:
+    build:
+      context: ..
+      dockerfile: deploy/containers/Dockerfile.web
+    container_name: sat-sa-web
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:80"
+    depends_on:
+      - api
+    networks:
+      - sat_sa_isolated_net
+
+networks:
+  sat_sa_isolated_net:
+    driver: bridge
+    internal: true  # STRICT OFFLINE: no outbound external gateway or internet routing permitted
+
+volumes:
+  sat_sa_data:
+    driver: local

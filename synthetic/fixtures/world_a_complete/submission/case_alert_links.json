@@ -1,0 +1,14 @@
+[
+  {
+    "native_id": "LNK-01",
+    "case_id": "CAS-501",
+    "alert_id": "ALT-1001",
+    "linked_at": "2026-01-05T08:35:00Z"
+  },
+  {
+    "native_id": "LNK-02",
+    "case_id": "CAS-501",
+    "alert_id": "ALT-1002",
+    "linked_at": "2026-01-05T08:36:00Z"
+  }
+]

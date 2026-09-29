@@ -1,0 +1,11 @@
+[
+  {
+    "native_id": "CAS-501",
+    "created_at": "2026-01-05T08:30:00Z",
+    "closed_at": "2026-01-06T10:00:00Z",
+    "severity": "HIGH",
+    "status": "CLOSED",
+    "assigned_analyst": "analyst-42",
+    "root_cause": "Credential stuffing attack neutralized"
+  }
+]

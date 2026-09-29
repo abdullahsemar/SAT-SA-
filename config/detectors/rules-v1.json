@@ -1,0 +1,30 @@
+{
+  "rule_version": "rules-v1",
+  "families": {
+    "investigation_evidence": {
+      "name": "Investigation Evidence Completeness",
+      "description": "Verifies that required investigation actions and forensic artifacts are demonstrated for eligible cases.",
+      "obligation_id": "POL-INV-001"
+    },
+    "escalation_evidence": {
+      "name": "Timely Escalation Evidence",
+      "description": "Evaluates whether high/critical cases received timely escalation within SLA, accounting for valid policy exceptions.",
+      "obligation_id": "POL-ESC-002"
+    },
+    "monitoring_coverage": {
+      "name": "Critical Asset Monitoring Coverage",
+      "description": "Verifies sensor telemetry coverage for critical assets; distinguishes quiet assets from unmonitored assets.",
+      "obligation_id": "POL-COV-003"
+    },
+    "kpi_reconciliation": {
+      "name": "Reported Claim versus Observed Population",
+      "description": "Reconciles self-reported entity KPI claims against distinct observed case outcomes within bounded uncertainty intervals.",
+      "obligation_id": "POL-KPI-004"
+    },
+    "recurrence_context": {
+      "name": "Asset Incident Recurrence Context",
+      "description": "Detects recurring conditions on stable assets while contextualizing benign operational changes and remediation ownership.",
+      "obligation_id": "POL-REC-005"
+    }
+  }
+}

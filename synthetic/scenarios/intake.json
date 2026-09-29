@@ -1,0 +1,34 @@
+{
+  "scenarios": [
+    {
+      "id": "complete_operations",
+      "name": "World A: Complete Operations",
+      "description": "Consistent operational truth across assets, alerts, cases, links, and remediations. Formatted in CSV and JSON.",
+      "seed": 42,
+      "entity_id": "CSE-BANK-01",
+      "period_start": "2026-01-01T00:00:00Z",
+      "period_end": "2026-02-01T00:00:00Z",
+      "source_timezone": "UTC"
+    },
+    {
+      "id": "incomplete_export",
+      "name": "World B: Incomplete Export",
+      "description": "Incomplete submission containing orphan case links, malformed timestamps, declared row count mismatch, and missing optional sources.",
+      "seed": 101,
+      "entity_id": "CSE-BANK-01",
+      "period_start": "2026-01-01T00:00:00Z",
+      "period_end": "2026-02-01T00:00:00Z",
+      "source_timezone": "UTC"
+    },
+    {
+      "id": "reused_native_ids",
+      "name": "World C: Reused Native IDs Across Entities",
+      "description": "Two distinct entities reusing the same native alert and case IDs. Valid across entities, but verifying conflict isolation.",
+      "seed": 202,
+      "entities": ["CSE-BANK-01", "CSE-FINTECH-02"],
+      "period_start": "2026-01-01T00:00:00Z",
+      "period_end": "2026-02-01T00:00:00Z",
+      "source_timezone": "UTC"
+    }
+  ]
+}

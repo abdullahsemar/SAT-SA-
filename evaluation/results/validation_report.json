@@ -1,0 +1,682 @@
+{
+  "evaluation_timestamp": "2026-09-29T11:40:03.409452",
+  "total_worlds_evaluated": 10,
+  "scenarios_passed": 10,
+  "scenarios_failed": 0,
+  "evaluation_granularity": "scenario_and_obligation_object",
+  "control_worlds": {
+    "total_controls": 1,
+    "true_negatives": 1,
+    "false_positives": 0,
+    "numerator": 1,
+    "denominator": 1,
+    "specificity": 1.0,
+    "unassessable_controls": 3
+  },
+  "non_control_worlds": {
+    "total_non_controls": 6,
+    "assessable_non_controls": 5,
+    "true_positives": 5,
+    "false_negatives": 0,
+    "numerator": 5,
+    "denominator": 5,
+    "sensitivity_assessable": 1.0,
+    "unassessable_due_to_incomplete_evidence": 1
+  },
+  "disclaimer": "NOTICE: Synthetic scenario evaluation tests system consistency against declared latent models and synthetic fixture performance. It does not constitute a statistical claim of expert-equivalent supervisory efficacy or real-world SOC effectiveness accuracy.",
+  "world_results": [
+    {
+      "intake_quality": {
+        "accepted": 5,
+        "rejected": 0
+      },
+      "scenario_id": "WORLD-01-STRONG-CAPABILITY",
+      "name": "Strong Capability (Baseline Control)",
+      "is_control": true,
+      "expected_outcomes": {
+        "expected_findings": [
+          {
+            "rule_id": "POL-KPI-004",
+            "primary_object_id": "CLM-01",
+            "acceptable_states": [
+              "supported"
+            ]
+          }
+        ],
+        "prohibited_adverse_rules": [
+          "POL-INV-001",
+          "POL-ESC-002",
+          "POL-COV-003",
+          "POL-KPI-004",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 0
+      },
+      "actual_findings": [
+        {
+          "rule_id": "POL-KPI-004",
+          "primary_object_type": "claim",
+          "primary_object_id": "CLM-01",
+          "evidence_state": "supported",
+          "severity": "medium"
+        }
+      ],
+      "adverse_findings_count": 0,
+      "insufficient_evidence_count": 0,
+      "supported_findings_count": 1,
+      "missing_expected_findings": [],
+      "unexpected_adverse_findings": [],
+      "incorrect_evidence_states": [],
+      "broken_citations": [],
+      "explanation": "All scenario expectations satisfied.",
+      "portfolio_items_selected": 3,
+      "covered_hypotheses": [
+        "hyp:exploratory_metric",
+        "hyp:baseline_healthy_silence",
+        "hyp:claim_reconciliation"
+      ],
+      "shortfalls": {
+        "targeted": 2,
+        "control": 0,
+        "exploratory": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "intake_quality": {
+        "accepted": 8,
+        "rejected": 0
+      },
+      "scenario_id": "WORLD-02-KPI-PROCEDURAL-CLOSURE",
+      "name": "KPI-Driven Procedural Closure",
+      "is_control": false,
+      "expected_outcomes": {
+        "expected_findings": [
+          {
+            "rule_id": "POL-INV-001",
+            "primary_object_id": "CASE-02-001",
+            "acceptable_states": [
+              "potential_concern"
+            ]
+          },
+          {
+            "rule_id": "POL-INV-001",
+            "primary_object_id": "CASE-02-002",
+            "acceptable_states": [
+              "potential_concern"
+            ]
+          },
+          {
+            "rule_id": "POL-KPI-004",
+            "primary_object_id": "CLM-02",
+            "acceptable_states": [
+              "supported"
+            ]
+          }
+        ],
+        "prohibited_adverse_rules": [
+          "POL-ESC-002",
+          "POL-COV-003",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 2
+      },
+      "actual_findings": [
+        {
+          "rule_id": "POL-KPI-004",
+          "primary_object_type": "claim",
+          "primary_object_id": "CLM-02",
+          "evidence_state": "supported",
+          "severity": "medium"
+        },
+        {
+          "rule_id": "POL-INV-001",
+          "primary_object_type": "case",
+          "primary_object_id": "CASE-02-002",
+          "evidence_state": "potential_concern",
+          "severity": "high"
+        },
+        {
+          "rule_id": "POL-INV-001",
+          "primary_object_type": "case",
+          "primary_object_id": "CASE-02-001",
+          "evidence_state": "potential_concern",
+          "severity": "high"
+        }
+      ],
+      "adverse_findings_count": 2,
+      "insufficient_evidence_count": 0,
+      "supported_findings_count": 1,
+      "missing_expected_findings": [],
+      "unexpected_adverse_findings": [],
+      "incorrect_evidence_states": [],
+      "broken_citations": [],
+      "explanation": "All scenario expectations satisfied.",
+      "portfolio_items_selected": 5,
+      "covered_hypotheses": [
+        "hyp:baseline_healthy_silence",
+        "hyp:exploratory_metric",
+        "hyp:investigation_quality",
+        "hyp:claim_reconciliation"
+      ],
+      "shortfalls": {
+        "targeted": 0,
+        "control": 0,
+        "exploratory": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "intake_quality": {
+        "accepted": 2,
+        "rejected": 0
+      },
+      "scenario_id": "WORLD-03-POOR-DETECTION-COVERAGE",
+      "name": "Poor Detection Coverage & Blind Spots",
+      "is_control": false,
+      "expected_outcomes": {
+        "expected_findings": [
+          {
+            "rule_id": "POL-COV-003",
+            "primary_object_id": "SRV-UNHEALTHY-SENSOR-01",
+            "acceptable_states": [
+              "potential_concern"
+            ]
+          },
+          {
+            "rule_id": "POL-COV-003",
+            "primary_object_id": "SRV-NO-AGENT-02",
+            "acceptable_states": [
+              "insufficient_evidence"
+            ]
+          }
+        ],
+        "prohibited_adverse_rules": [
+          "POL-INV-001",
+          "POL-ESC-002",
+          "POL-KPI-004",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 1
+      },
+      "actual_findings": [
+        {
+          "rule_id": "POL-KPI-004",
+          "primary_object_type": "source",
+          "primary_object_id": "src-reported_claims",
+          "evidence_state": "insufficient_evidence",
+          "severity": "medium"
+        },
+        {
+          "rule_id": "POL-COV-003",
+          "primary_object_type": "asset",
+          "primary_object_id": "SRV-NO-AGENT-02",
+          "evidence_state": "insufficient_evidence",
+          "severity": "medium"
+        },
+        {
+          "rule_id": "POL-COV-003",
+          "primary_object_type": "asset",
+          "primary_object_id": "SRV-UNHEALTHY-SENSOR-01",
+          "evidence_state": "potential_concern",
+          "severity": "high"
+        },
+        {
+          "rule_id": "POL-INV-001",
+          "primary_object_type": "submission",
+          "primary_object_id": "5f97d066-e30d-4827-a14a-8b412a1c7bee",
+          "evidence_state": "insufficient_evidence",
+          "severity": "medium"
+        }
+      ],
+      "adverse_findings_count": 1,
+      "insufficient_evidence_count": 3,
+      "supported_findings_count": 0,
+      "missing_expected_findings": [],
+      "unexpected_adverse_findings": [],
+      "incorrect_evidence_states": [],
+      "broken_citations": [],
+      "explanation": "All scenario expectations satisfied.",
+      "portfolio_items_selected": 3,
+      "covered_hypotheses": [
+        "hyp:monitoring_coverage",
+        "hyp:investigation_quality",
+        "hyp:claim_reconciliation"
+      ],
+      "shortfalls": {
+        "targeted": 0,
+        "control": 1,
+        "exploratory": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "intake_quality": {
+        "accepted": 3,
+        "rejected": 0
+      },
+      "scenario_id": "WORLD-04-COMPETENT-HIGH-WORKLOAD",
+      "name": "Competent High Workload (Backlog & Delayed Escalations)",
+      "is_control": false,
+      "expected_outcomes": {
+        "expected_findings": [
+          {
+            "rule_id": "POL-ESC-002",
+            "primary_object_id": "CASE-04-001",
+            "acceptable_states": [
+              "potential_concern"
+            ]
+          }
+        ],
+        "prohibited_adverse_rules": [
+          "POL-COV-003",
+          "POL-KPI-004",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 1
+      },
+      "actual_findings": [
+        {
+          "rule_id": "POL-KPI-004",
+          "primary_object_type": "source",
+          "primary_object_id": "src-reported_claims",
+          "evidence_state": "insufficient_evidence",
+          "severity": "medium"
+        },
+        {
+          "rule_id": "POL-ESC-002",
+          "primary_object_type": "case",
+          "primary_object_id": "CASE-04-001",
+          "evidence_state": "potential_concern",
+          "severity": "high"
+        },
+        {
+          "rule_id": "POL-INV-001",
+          "primary_object_type": "case",
+          "primary_object_id": "CASE-04-001",
+          "evidence_state": "insufficient_evidence",
+          "severity": "high"
+        }
+      ],
+      "adverse_findings_count": 1,
+      "insufficient_evidence_count": 2,
+      "supported_findings_count": 0,
+      "missing_expected_findings": [],
+      "unexpected_adverse_findings": [],
+      "incorrect_evidence_states": [],
+      "broken_citations": [],
+      "explanation": "All scenario expectations satisfied.",
+      "portfolio_items_selected": 4,
+      "covered_hypotheses": [
+        "hyp:baseline_healthy_silence",
+        "hyp:investigation_quality",
+        "hyp:escalation_timeliness",
+        "hyp:claim_reconciliation"
+      ],
+      "shortfalls": {
+        "targeted": 0,
+        "control": 0,
+        "exploratory": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "intake_quality": {
+        "accepted": 1,
+        "rejected": 0
+      },
+      "scenario_id": "WORLD-05-LOW-ACTIVITY-POOR-MONITORING",
+      "name": "Low Activity with Poor Monitoring (False Peace)",
+      "is_control": false,
+      "expected_outcomes": {
+        "expected_findings": [
+          {
+            "rule_id": "POL-COV-003",
+            "primary_object_id": "SRV-QUIET-BROKEN-01",
+            "acceptable_states": [
+              "potential_concern"
+            ]
+          }
+        ],
+        "prohibited_adverse_rules": [
+          "POL-INV-001",
+          "POL-ESC-002",
+          "POL-KPI-004",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 1
+      },
+      "actual_findings": [
+        {
+          "rule_id": "POL-KPI-004",
+          "primary_object_type": "source",
+          "primary_object_id": "src-reported_claims",
+          "evidence_state": "insufficient_evidence",
+          "severity": "medium"
+        },
+        {
+          "rule_id": "POL-COV-003",
+          "primary_object_type": "asset",
+          "primary_object_id": "SRV-QUIET-BROKEN-01",
+          "evidence_state": "potential_concern",
+          "severity": "high"
+        },
+        {
+          "rule_id": "POL-INV-001",
+          "primary_object_type": "submission",
+          "primary_object_id": "fe6726ae-8a63-4d46-9fe7-971b1689edc2",
+          "evidence_state": "insufficient_evidence",
+          "severity": "medium"
+        }
+      ],
+      "adverse_findings_count": 1,
+      "insufficient_evidence_count": 2,
+      "supported_findings_count": 0,
+      "missing_expected_findings": [],
+      "unexpected_adverse_findings": [],
+      "incorrect_evidence_states": [],
+      "broken_citations": [],
+      "explanation": "All scenario expectations satisfied.",
+      "portfolio_items_selected": 3,
+      "covered_hypotheses": [
+        "hyp:monitoring_coverage",
+        "hyp:investigation_quality",
+        "hyp:claim_reconciliation"
+      ],
+      "shortfalls": {
+        "targeted": 0,
+        "control": 1,
+        "exploratory": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "intake_quality": {
+        "accepted": 5,
+        "rejected": 0
+      },
+      "scenario_id": "WORLD-06-LEGITIMATE-BENIGN-RECURRENCE",
+      "name": "Legitimate Benign Recurrence (Vulnerability Scanner)",
+      "is_control": true,
+      "expected_outcomes": {
+        "expected_findings": [],
+        "prohibited_adverse_rules": [
+          "POL-INV-001",
+          "POL-ESC-002",
+          "POL-COV-003",
+          "POL-KPI-004",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 0
+      },
+      "actual_findings": [
+        {
+          "rule_id": "POL-KPI-004",
+          "primary_object_type": "source",
+          "primary_object_id": "src-reported_claims",
+          "evidence_state": "insufficient_evidence",
+          "severity": "medium"
+        }
+      ],
+      "adverse_findings_count": 0,
+      "insufficient_evidence_count": 1,
+      "supported_findings_count": 0,
+      "missing_expected_findings": [],
+      "unexpected_adverse_findings": [],
+      "incorrect_evidence_states": [],
+      "broken_citations": [],
+      "explanation": "All scenario expectations satisfied.",
+      "portfolio_items_selected": 3,
+      "covered_hypotheses": [
+        "hyp:baseline_compliance",
+        "hyp:exploratory_edge_case",
+        "hyp:claim_reconciliation"
+      ],
+      "shortfalls": {
+        "targeted": 2,
+        "control": 0,
+        "exploratory": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "intake_quality": {
+        "accepted": 3,
+        "rejected": 0
+      },
+      "scenario_id": "WORLD-07-OUTSOURCED-REMEDIATION",
+      "name": "Outsourced Remediation (MSSP Handoff & Right-Censoring)",
+      "is_control": true,
+      "expected_outcomes": {
+        "expected_findings": [],
+        "prohibited_adverse_rules": [
+          "POL-INV-001",
+          "POL-ESC-002",
+          "POL-COV-003",
+          "POL-KPI-004",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 0
+      },
+      "actual_findings": [
+        {
+          "rule_id": "POL-KPI-004",
+          "primary_object_type": "source",
+          "primary_object_id": "src-reported_claims",
+          "evidence_state": "insufficient_evidence",
+          "severity": "medium"
+        }
+      ],
+      "adverse_findings_count": 0,
+      "insufficient_evidence_count": 1,
+      "supported_findings_count": 0,
+      "missing_expected_findings": [],
+      "unexpected_adverse_findings": [],
+      "incorrect_evidence_states": [],
+      "broken_citations": [],
+      "explanation": "All scenario expectations satisfied.",
+      "portfolio_items_selected": 3,
+      "covered_hypotheses": [
+        "hyp:baseline_compliance",
+        "hyp:exploratory_edge_case",
+        "hyp:claim_reconciliation"
+      ],
+      "shortfalls": {
+        "targeted": 2,
+        "control": 0,
+        "exploratory": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "intake_quality": {
+        "accepted": 3,
+        "rejected": 0
+      },
+      "scenario_id": "WORLD-08-BIASED-SUBMISSION",
+      "name": "Biased Submission (Selective Filtering / Omitted Critical Alerts)",
+      "is_control": false,
+      "expected_outcomes": {
+        "expected_findings": [
+          {
+            "rule_id": "POL-KPI-004",
+            "primary_object_id": "CLM-08",
+            "acceptable_states": [
+              "insufficient_evidence"
+            ]
+          }
+        ],
+        "prohibited_adverse_rules": [
+          "POL-INV-001",
+          "POL-ESC-002",
+          "POL-COV-003",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 0
+      },
+      "actual_findings": [
+        {
+          "rule_id": "POL-KPI-004",
+          "primary_object_type": "claim",
+          "primary_object_id": "CLM-08",
+          "evidence_state": "insufficient_evidence",
+          "severity": "medium"
+        }
+      ],
+      "adverse_findings_count": 0,
+      "insufficient_evidence_count": 1,
+      "supported_findings_count": 0,
+      "missing_expected_findings": [],
+      "unexpected_adverse_findings": [],
+      "incorrect_evidence_states": [],
+      "broken_citations": [],
+      "explanation": "All scenario expectations satisfied.",
+      "portfolio_items_selected": 3,
+      "covered_hypotheses": [
+        "hyp:baseline_compliance",
+        "hyp:exploratory_metric",
+        "hyp:claim_reconciliation"
+      ],
+      "shortfalls": {
+        "targeted": 2,
+        "control": 0,
+        "exploratory": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "intake_quality": {
+        "accepted": 3,
+        "rejected": 0
+      },
+      "scenario_id": "WORLD-09-GOOD-OPERATIONS-MISSING-EXPORTS",
+      "name": "Good Operations with Missing Exports (Classified UNKNOWN)",
+      "is_control": true,
+      "expected_outcomes": {
+        "expected_findings": [],
+        "prohibited_adverse_rules": [
+          "POL-INV-001",
+          "POL-ESC-002",
+          "POL-COV-003",
+          "POL-KPI-004",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 0
+      },
+      "actual_findings": [
+        {
+          "rule_id": "POL-KPI-004",
+          "primary_object_type": "source",
+          "primary_object_id": "src-reported_claims",
+          "evidence_state": "insufficient_evidence",
+          "severity": "medium"
+        },
+        {
+          "rule_id": "POL-INV-001",
+          "primary_object_type": "case",
+          "primary_object_id": "CASE-09-001",
+          "evidence_state": "insufficient_evidence",
+          "severity": "high"
+        }
+      ],
+      "adverse_findings_count": 0,
+      "insufficient_evidence_count": 2,
+      "supported_findings_count": 0,
+      "missing_expected_findings": [],
+      "unexpected_adverse_findings": [],
+      "incorrect_evidence_states": [],
+      "broken_citations": [],
+      "explanation": "All scenario expectations satisfied.",
+      "portfolio_items_selected": 3,
+      "covered_hypotheses": [
+        "hyp:baseline_healthy_silence",
+        "hyp:investigation_quality",
+        "hyp:claim_reconciliation"
+      ],
+      "shortfalls": {
+        "targeted": 1,
+        "control": 0,
+        "exploratory": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "intake_quality": {
+        "accepted": 4,
+        "rejected": 0
+      },
+      "scenario_id": "WORLD-10-MULTI-PERIOD-DEGRADATION",
+      "name": "Multi-Period SLA Degradation",
+      "is_control": false,
+      "expected_outcomes": {
+        "expected_findings": [
+          {
+            "rule_id": "POL-KPI-004",
+            "primary_object_id": "CLM-10",
+            "acceptable_states": [
+              "contradictory",
+              "contradicted"
+            ]
+          },
+          {
+            "rule_id": "POL-ESC-002",
+            "primary_object_id": "CASE-10-001",
+            "acceptable_states": [
+              "potential_concern"
+            ]
+          }
+        ],
+        "prohibited_adverse_rules": [
+          "POL-COV-003",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 2
+      },
+      "actual_findings": [
+        {
+          "rule_id": "POL-KPI-004",
+          "primary_object_type": "claim",
+          "primary_object_id": "CLM-10",
+          "evidence_state": "contradictory",
+          "severity": "high"
+        },
+        {
+          "rule_id": "POL-ESC-002",
+          "primary_object_type": "case",
+          "primary_object_id": "CASE-10-001",
+          "evidence_state": "potential_concern",
+          "severity": "high"
+        },
+        {
+          "rule_id": "POL-INV-001",
+          "primary_object_type": "case",
+          "primary_object_id": "CASE-10-001",
+          "evidence_state": "insufficient_evidence",
+          "severity": "high"
+        }
+      ],
+      "adverse_findings_count": 2,
+      "insufficient_evidence_count": 1,
+      "supported_findings_count": 0,
+      "missing_expected_findings": [],
+      "unexpected_adverse_findings": [],
+      "incorrect_evidence_states": [],
+      "broken_citations": [],
+      "explanation": "All scenario expectations satisfied.",
+      "portfolio_items_selected": 5,
+      "covered_hypotheses": [
+        "hyp:exploratory_metric",
+        "hyp:claim_reconciliation",
+        "hyp:investigation_quality",
+        "hyp:baseline_healthy_silence",
+        "hyp:escalation_timeliness"
+      ],
+      "shortfalls": {
+        "targeted": 0,
+        "control": 0,
+        "exploratory": 0
+      },
+      "status": "PASS"
+    }
+  ]
+}

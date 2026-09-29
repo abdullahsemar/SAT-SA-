@@ -1,0 +1,2 @@
+native_id,hostname,ip_address,criticality,owner,environment,timestamp
+AST-101,db-prod-01,10.1.0.4,CRITICAL,DBA Team,PROD,2026-01-03T12:00:00Z

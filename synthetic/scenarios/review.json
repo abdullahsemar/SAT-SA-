@@ -1,0 +1,280 @@
+{
+  "scenario_id": "SCENARIO-REVIEW-01",
+  "description": "Synthetic multi-hypothesis scenario with duplicated high-ranked cases, absence-of-coverage quiet assets, and unflagged control populations for portfolio review",
+  "cse_id": "CSE-BANK-01",
+  "period_start": "2026-08-01T00:00:00Z",
+  "period_end": "2026-08-31T23:59:59Z",
+  "claims": [
+    {
+      "claim_id": "CLM-SLA-01",
+      "claim_type": "sla_compliance",
+      "metric_name": "incident_sla_compliance_pct",
+      "claimed_value": 98.0,
+      "period_start": "2026-08-01T00:00:00Z",
+      "period_end": "2026-08-31T23:59:59Z"
+    }
+  ],
+  "assets": [
+    {
+      "asset_id": "SRV-CORE-DB-01",
+      "hostname": "core-db-01.bank.internal",
+      "ip_address": "10.100.1.10",
+      "criticality": "CRITICAL",
+      "status": "ACTIVE",
+      "agent_status": "HEALTHY",
+      "last_heartbeat": "2026-08-31T23:45:00Z"
+    },
+    {
+      "asset_id": "SRV-PAY-API-02",
+      "hostname": "pay-api-02.bank.internal",
+      "ip_address": "10.100.2.15",
+      "criticality": "CRITICAL",
+      "status": "ACTIVE",
+      "agent_status": "UNHEALTHY",
+      "last_heartbeat": "2026-08-10T11:00:00Z"
+    },
+    {
+      "asset_id": "SRV-SWIFT-GW-01",
+      "hostname": "swift-gw-01.bank.internal",
+      "ip_address": "10.100.3.5",
+      "criticality": "CRITICAL",
+      "status": "ACTIVE",
+      "agent_status": null,
+      "last_heartbeat": null
+    },
+    {
+      "asset_id": "SRV-UNHEALTHY-SENSOR-01",
+      "hostname": "sensor-gw-01.bank.internal",
+      "ip_address": "10.100.3.8",
+      "criticality": "CRITICAL",
+      "status": "ACTIVE",
+      "agent_status": "DISCONNECTED",
+      "last_heartbeat": "2026-08-01T02:00:00Z"
+    },
+    {
+      "asset_id": "SRV-QUIET-VAULT-01",
+      "hostname": "vault-01.bank.internal",
+      "ip_address": "10.100.4.1",
+      "criticality": "CRITICAL",
+      "status": "ACTIVE",
+      "agent_status": "HEALTHY",
+      "last_heartbeat": "2026-08-31T23:55:00Z"
+    },
+    {
+      "asset_id": "SRV-RECUR-01",
+      "hostname": "recur-01.bank.internal",
+      "ip_address": "10.100.5.20",
+      "criticality": "HIGH",
+      "status": "ACTIVE",
+      "agent_status": "HEALTHY",
+      "last_heartbeat": "2026-08-31T23:50:00Z"
+    },
+    {
+      "asset_id": "SRV-CONTROL-01",
+      "hostname": "ctrl-01.bank.internal",
+      "ip_address": "10.100.7.1",
+      "criticality": "MEDIUM",
+      "status": "ACTIVE",
+      "agent_status": "HEALTHY",
+      "last_heartbeat": "2026-08-31T23:50:00Z"
+    },
+    {
+      "asset_id": "SRV-CONTROL-02",
+      "hostname": "ctrl-02.bank.internal",
+      "ip_address": "10.100.7.2",
+      "criticality": "MEDIUM",
+      "status": "ACTIVE",
+      "agent_status": "HEALTHY",
+      "last_heartbeat": "2026-08-31T23:50:00Z"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "CASE-FAST-DUP-01",
+      "title": "Suspicious login attempt batch 1",
+      "severity": "HIGH",
+      "status": "CLOSED",
+      "created_at": "2026-08-05T10:00:00Z",
+      "closed_at": "2026-08-05T10:00:15Z",
+      "disposition": null,
+      "assigned_to": "analyst1"
+    },
+    {
+      "case_id": "CASE-FAST-DUP-02",
+      "title": "Suspicious login attempt batch 2",
+      "severity": "HIGH",
+      "status": "CLOSED",
+      "created_at": "2026-08-05T10:05:00Z",
+      "closed_at": "2026-08-05T10:05:15Z",
+      "disposition": null,
+      "assigned_to": "analyst1"
+    },
+    {
+      "case_id": "CASE-FAST-DUP-03",
+      "title": "Suspicious login attempt batch 3",
+      "severity": "HIGH",
+      "status": "CLOSED",
+      "created_at": "2026-08-05T10:10:00Z",
+      "closed_at": "2026-08-05T10:10:15Z",
+      "disposition": null,
+      "assigned_to": "analyst1"
+    },
+    {
+      "case_id": "CASE-FAST-DUP-04",
+      "title": "Suspicious login attempt batch 4",
+      "severity": "HIGH",
+      "status": "CLOSED",
+      "created_at": "2026-08-05T10:15:00Z",
+      "closed_at": "2026-08-05T10:15:15Z",
+      "disposition": null,
+      "assigned_to": "analyst1"
+    },
+    {
+      "case_id": "CASE-OVERDUE-ESCALATION-01",
+      "title": "Critical core database modification",
+      "severity": "CRITICAL",
+      "status": "OPEN",
+      "created_at": "2026-08-10T08:00:00Z",
+      "disposition": null,
+      "assigned_to": "analyst2"
+    },
+    {
+      "case_id": "CASE-RECUR-01",
+      "title": "Repeated memory leak on recur host",
+      "severity": "MEDIUM",
+      "status": "CLOSED",
+      "created_at": "2026-08-02T10:00:00Z",
+      "closed_at": "2026-08-02T12:00:00Z",
+      "disposition": "RESOLVED_TEMP_CLEANUP",
+      "assigned_to": "analyst1"
+    },
+    {
+      "case_id": "CASE-CONTROL-NORM-01",
+      "title": "Authorized security benchmark test",
+      "severity": "LOW",
+      "status": "CLOSED",
+      "created_at": "2026-08-06T14:00:00Z",
+      "closed_at": "2026-08-06T14:45:00Z",
+      "disposition": "BENIGN_VERIFIED_BENCHMARK",
+      "assigned_to": "analyst3"
+    },
+    {
+      "case_id": "CASE-CONTROL-NORM-02",
+      "title": "Scheduled vulnerability scanning",
+      "severity": "LOW",
+      "status": "CLOSED",
+      "created_at": "2026-08-07T03:00:00Z",
+      "closed_at": "2026-08-07T03:30:00Z",
+      "disposition": "AUTHORIZED_SCANNER",
+      "assigned_to": "analyst3"
+    },
+    {
+      "case_id": "CASE-CONTROL-NORM-03",
+      "title": "User password reset follow-up",
+      "severity": "LOW",
+      "status": "CLOSED",
+      "created_at": "2026-08-08T09:00:00Z",
+      "closed_at": "2026-08-08T09:25:00Z",
+      "disposition": "RESOLVED_USER_CONFIRMED",
+      "assigned_to": "analyst1"
+    },
+    {
+      "case_id": "CASE-CONTROL-NORM-04",
+      "title": "Branch VPN reconnect spike",
+      "severity": "LOW",
+      "status": "CLOSED",
+      "created_at": "2026-08-09T11:00:00Z",
+      "closed_at": "2026-08-09T11:40:00Z",
+      "disposition": "NETWORK_ISP_RESOLVED",
+      "assigned_to": "analyst2"
+    },
+    {
+      "case_id": "CASE-CONTROL-NORM-05",
+      "title": "Routine certificate rotation audit",
+      "severity": "LOW",
+      "status": "CLOSED",
+      "created_at": "2026-08-11T16:00:00Z",
+      "closed_at": "2026-08-11T16:35:00Z",
+      "disposition": "COMPLETED_NORMAL",
+      "assigned_to": "analyst3"
+    },
+    {
+      "case_id": "CASE-CONTROL-NORM-06",
+      "title": "Firewall configuration push audit",
+      "severity": "LOW",
+      "status": "CLOSED",
+      "created_at": "2026-08-12T18:00:00Z",
+      "closed_at": "2026-08-12T18:30:00Z",
+      "disposition": "CHANGE_WINDOW_VERIFIED",
+      "assigned_to": "analyst2"
+    }
+  ],
+  "alerts": [
+    {
+      "alert_id": "ALT-PAY-01",
+      "asset_id": "SRV-PAY-API-02",
+      "title": "Payment gateway latency alert",
+      "severity": "LOW",
+      "created_at": "2026-08-10T10:00:00Z"
+    },
+    {
+      "alert_id": "ALT-REC-01",
+      "asset_id": "SRV-RECUR-01",
+      "title": "Process memory spike",
+      "severity": "MEDIUM",
+      "created_at": "2026-08-02T09:50:00Z"
+    },
+    {
+      "alert_id": "ALT-REC-02",
+      "asset_id": "SRV-RECUR-01",
+      "title": "Process memory spike",
+      "severity": "MEDIUM",
+      "created_at": "2026-08-12T09:50:00Z"
+    },
+    {
+      "alert_id": "ALT-CTRL-01",
+      "asset_id": "SRV-CONTROL-01",
+      "title": "Routine backup completion ping",
+      "severity": "LOW",
+      "created_at": "2026-08-06T04:00:00Z"
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "ACT-OVERDUE-01",
+      "case_id": "CASE-OVERDUE-ESCALATION-01",
+      "action_type": "escalation_attempt",
+      "created_at": "2026-08-11T14:00:00Z",
+      "created_by": "analyst2",
+      "details": {
+        "channel": "email"
+      }
+    },
+    {
+      "action_id": "ACT-CONTROL-01",
+      "case_id": "CASE-CONTROL-NORM-01",
+      "action_type": "triage_notes",
+      "created_at": "2026-08-06T14:10:00Z",
+      "created_by": "analyst3",
+      "details": {
+        "notes": "Verified against approved scheduled benchmark ticket."
+      }
+    },
+    {
+      "action_id": "ACT-CONTROL-02",
+      "case_id": "CASE-CONTROL-NORM-02",
+      "action_type": "triage_notes",
+      "created_at": "2026-08-07T03:10:00Z",
+      "created_by": "analyst3",
+      "details": {
+        "notes": "IP matched authorized vulnerability management scanner."
+      }
+    }
+  ],
+  "case_alert_links": [
+    {
+      "case_id": "CASE-RECUR-01",
+      "alert_id": "ALT-REC-01"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "scenario": "complete_operations",
+  "entity_id": "CSE-BANK-01",
+  "expected_findings": [],
+  "expected_issue_counts": {
+    "rejected_count": 0,
+    "duplicate_count": 0,
+    "orphan_count": 0,
+    "timestamp_problem_count": 0
+  },
+  "operational_notes": "All telemetry consistent, zero anomalies."
+}

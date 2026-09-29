@@ -1,0 +1,30 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    HF_HUB_OFFLINE=1 \
+    TRANSFORMERS_OFFLINE=1 \
+    TORCH_HOME=/app/models
+
+# Install sqlite3 and tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    sqlite3 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy offline bundle components
+COPY pyproject.toml alembic.ini ./
+COPY apps/ ./apps/
+COPY db/ ./db/
+COPY packages/ ./packages/
+COPY config/ ./config/
+COPY models/ ./models/
+COPY synthetic/ ./synthetic/
+
+# Install python dependencies from local wheel cache or pyproject
+RUN pip install --no-cache-dir .
+
+EXPOSE 8000
+
+CMD ["uvicorn", "apps.api.main:app", "--host", "0.0.0.0", "--port", "8000"]

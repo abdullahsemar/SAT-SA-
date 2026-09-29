@@ -1,0 +1,436 @@
+{
+  "dataset_version": "1.0",
+  "generated_at": "2026-09-21T18:00:00Z",
+  "description": "Ten distinct synthetic worlds for offline assessment evaluation, preserving latent operational truth without detector bias.",
+  "worlds": [
+    {
+      "scenario_id": "WORLD-01-STRONG-CAPABILITY",
+      "name": "Strong Capability (Baseline Control)",
+      "latent_truth": {
+        "detection_quality": "HIGH",
+        "triage_timeliness": "FAST",
+        "investigation_thoroughness": "THOROUGH",
+        "expected_findings": 0,
+        "is_control": true
+      },
+      "expected_outcomes": {
+        "expected_findings": [
+          {
+            "rule_id": "POL-KPI-004",
+            "primary_object_id": "CLM-01",
+            "acceptable_states": ["supported"]
+          }
+        ],
+        "prohibited_adverse_rules": [
+          "POL-INV-001",
+          "POL-ESC-002",
+          "POL-COV-003",
+          "POL-KPI-004",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 0
+      },
+      "cse_id": "CSE-BANK-01",
+      "period_start": "2026-08-01T00:00:00Z",
+      "period_end": "2026-08-31T23:59:59Z",
+      "claims": [
+        {"claim_id": "CLM-01", "claim_type": "sla_compliance", "metric_name": "incident_sla_compliance_pct", "claimed_value": 98.5}
+      ],
+      "assets": [
+        {"asset_id": "SRV-BANK-CORE-01", "hostname": "core01.bank.internal", "ip_address": "10.1.1.10", "criticality": "CRITICAL", "agent_status": "HEALTHY", "last_heartbeat": "2026-08-31T23:55:00Z"},
+        {"asset_id": "SRV-BANK-APP-02", "hostname": "app02.bank.internal", "ip_address": "10.1.2.15", "criticality": "HIGH", "agent_status": "HEALTHY", "last_heartbeat": "2026-08-31T23:50:00Z"}
+      ],
+      "alerts": [
+        {"alert_id": "ALT-01-001", "timestamp": "2026-08-05T10:00:00Z", "asset_id": "SRV-BANK-CORE-01", "rule_id": "R-DET-SUSP-AUTH", "severity": "MEDIUM", "status": "ESCALATED", "case_id": "CASE-01-001"}
+      ],
+      "cases": [
+        {"case_id": "CASE-01-001", "severity": "MEDIUM", "created_at": "2026-08-05T10:05:00Z", "closed_at": "2026-08-05T10:45:00Z", "resolution": "FALSE_POSITIVE", "analyst_id": "ANALYST-101", "investigation_notes": "Reviewed host telemetry, verified scheduled administrator maintenance script with ticket CHG-88192.", "reopen_count": 0}
+      ]
+    },
+    {
+      "scenario_id": "WORLD-02-KPI-PROCEDURAL-CLOSURE",
+      "name": "KPI-Driven Procedural Closure",
+      "latent_truth": {
+        "detection_quality": "NORMAL",
+        "triage_timeliness": "SUPERFICIAL_FAST",
+        "investigation_thoroughness": "POOR",
+        "expected_findings": 2,
+        "is_control": false
+      },
+      "expected_outcomes": {
+        "expected_findings": [
+          {
+            "rule_id": "POL-INV-001",
+            "primary_object_id": "CASE-02-001",
+            "acceptable_states": ["potential_concern"]
+          },
+          {
+            "rule_id": "POL-INV-001",
+            "primary_object_id": "CASE-02-002",
+            "acceptable_states": ["potential_concern"]
+          },
+          {
+            "rule_id": "POL-KPI-004",
+            "primary_object_id": "CLM-02",
+            "acceptable_states": ["supported"]
+          }
+        ],
+        "prohibited_adverse_rules": [
+          "POL-ESC-002",
+          "POL-COV-003",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 2
+      },
+      "cse_id": "CSE-BANK-01",
+      "period_start": "2026-08-01T00:00:00Z",
+      "period_end": "2026-08-31T23:59:59Z",
+      "claims": [
+        {"claim_id": "CLM-02", "claim_type": "sla_compliance", "metric_name": "incident_sla_compliance_pct", "claimed_value": 99.8}
+      ],
+      "assets": [
+        {"asset_id": "SRV-PORTAL-01", "hostname": "portal01.bank.internal", "ip_address": "10.2.1.20", "criticality": "HIGH", "agent_status": "HEALTHY", "last_heartbeat": "2026-08-31T23:50:00Z"}
+      ],
+      "alerts": [
+        {"alert_id": "ALT-02-001", "timestamp": "2026-08-03T14:00:00Z", "asset_id": "SRV-PORTAL-01", "rule_id": "R-DET-SQLI", "severity": "HIGH", "status": "CLOSED", "case_id": "CASE-02-001"},
+        {"alert_id": "ALT-02-002", "timestamp": "2026-08-03T14:05:00Z", "asset_id": "SRV-PORTAL-01", "rule_id": "R-DET-SQLI", "severity": "HIGH", "status": "CLOSED", "case_id": "CASE-02-002"}
+      ],
+      "cases": [
+        {"case_id": "CASE-02-001", "severity": "HIGH", "created_at": "2026-08-03T14:00:15Z", "closed_at": "2026-08-03T14:00:45Z", "resolution": "RESOLVED", "analyst_id": "ANALYST-FAST", "investigation_notes": "Closed per SOP.", "reopen_count": 3},
+        {"case_id": "CASE-02-002", "severity": "HIGH", "created_at": "2026-08-03T14:05:10Z", "closed_at": "2026-08-03T14:05:35Z", "resolution": "RESOLVED", "analyst_id": "ANALYST-FAST", "investigation_notes": "Auto-resolved fast closure.", "reopen_count": 2}
+      ],
+      "actions": [
+        {"action_id": "ACT-02-001", "case_id": "CASE-02-001", "action_type": "NOTE", "timestamp": "2026-08-03T14:00:20Z"},
+        {"action_id": "ACT-02-002", "case_id": "CASE-02-002", "action_type": "NOTE", "timestamp": "2026-08-03T14:05:15Z"}
+      ]
+    },
+    {
+      "scenario_id": "WORLD-03-POOR-DETECTION-COVERAGE",
+      "name": "Poor Detection Coverage & Blind Spots",
+      "latent_truth": {
+        "detection_quality": "BLIND_SPOTS",
+        "expected_findings": 1,
+        "is_control": false
+      },
+      "expected_outcomes": {
+        "expected_findings": [
+          {
+            "rule_id": "POL-COV-003",
+            "primary_object_id": "SRV-UNHEALTHY-SENSOR-01",
+            "acceptable_states": ["potential_concern"]
+          },
+          {
+            "rule_id": "POL-COV-003",
+            "primary_object_id": "SRV-NO-AGENT-02",
+            "acceptable_states": ["insufficient_evidence"]
+          }
+        ],
+        "prohibited_adverse_rules": [
+          "POL-INV-001",
+          "POL-ESC-002",
+          "POL-KPI-004",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 1
+      },
+      "cse_id": "CSE-BANK-01",
+      "period_start": "2026-08-01T00:00:00Z",
+      "period_end": "2026-08-31T23:59:59Z",
+      "claims": [],
+      "assets": [
+        {"asset_id": "SRV-UNHEALTHY-SENSOR-01", "hostname": "sensor01.bank.internal", "ip_address": "10.3.1.5", "criticality": "CRITICAL", "agent_status": "UNHEALTHY", "last_heartbeat": "2026-08-05T08:00:00Z"},
+        {"asset_id": "SRV-NO-AGENT-02", "hostname": "legacy02.bank.internal", "ip_address": "10.3.1.6", "criticality": "CRITICAL", "agent_status": null, "last_heartbeat": null}
+      ],
+      "alerts": [],
+      "cases": []
+    },
+    {
+      "scenario_id": "WORLD-04-COMPETENT-HIGH-WORKLOAD",
+      "name": "Competent High Workload (Backlog & Delayed Escalations)",
+      "latent_truth": {
+        "detection_quality": "HIGH",
+        "triage_timeliness": "DELAYED_DUE_TO_VOLUME",
+        "expected_findings": 1,
+        "is_control": false
+      },
+      "expected_outcomes": {
+        "expected_findings": [
+          {
+            "rule_id": "POL-ESC-002",
+            "primary_object_id": "CASE-04-001",
+            "acceptable_states": ["potential_concern"]
+          }
+        ],
+        "prohibited_adverse_rules": [
+          "POL-COV-003",
+          "POL-KPI-004",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 1
+      },
+      "cse_id": "CSE-BANK-01",
+      "period_start": "2026-08-01T00:00:00Z",
+      "period_end": "2026-08-31T23:59:59Z",
+      "claims": [],
+      "assets": [
+        {"asset_id": "SRV-EXCHANGE-01", "hostname": "mail01.bank.internal", "ip_address": "10.4.1.10", "criticality": "HIGH", "agent_status": "HEALTHY", "last_heartbeat": "2026-08-31T23:59:00Z"}
+      ],
+      "alerts": [
+        {"alert_id": "ALT-04-001", "timestamp": "2026-08-10T09:00:00Z", "asset_id": "SRV-EXCHANGE-01", "rule_id": "R-DET-MALWARE", "severity": "HIGH", "status": "ESCALATED", "case_id": "CASE-04-001"}
+      ],
+      "cases": [
+        {"case_id": "CASE-04-001", "severity": "HIGH", "created_at": "2026-08-10T15:30:00Z", "closed_at": "2026-08-10T18:00:00Z", "resolution": "CONTAINED", "analyst_id": "ANALYST-BUSY", "investigation_notes": "Triage delayed by 6.5 hours due to flood of phishing reports; payload identified and host isolated.", "reopen_count": 0}
+      ],
+      "escalations": []
+    },
+    {
+      "scenario_id": "WORLD-05-LOW-ACTIVITY-POOR-MONITORING",
+      "name": "Low Activity with Poor Monitoring (False Peace)",
+      "latent_truth": {
+        "detection_quality": "FALSE_PEACE",
+        "expected_findings": 1,
+        "is_control": false
+      },
+      "expected_outcomes": {
+        "expected_findings": [
+          {
+            "rule_id": "POL-COV-003",
+            "primary_object_id": "SRV-QUIET-BROKEN-01",
+            "acceptable_states": ["potential_concern"]
+          }
+        ],
+        "prohibited_adverse_rules": [
+          "POL-INV-001",
+          "POL-ESC-002",
+          "POL-KPI-004",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 1
+      },
+      "cse_id": "CSE-BANK-01",
+      "period_start": "2026-08-01T00:00:00Z",
+      "period_end": "2026-08-31T23:59:59Z",
+      "claims": [],
+      "assets": [
+        {"asset_id": "SRV-QUIET-BROKEN-01", "hostname": "silent.bank.internal", "ip_address": "10.5.1.1", "criticality": "CRITICAL", "agent_status": "UNHEALTHY", "last_heartbeat": "2026-08-01T02:00:00Z"}
+      ],
+      "alerts": [],
+      "cases": []
+    },
+    {
+      "scenario_id": "WORLD-06-LEGITIMATE-BENIGN-RECURRENCE",
+      "name": "Legitimate Benign Recurrence (Vulnerability Scanner)",
+      "latent_truth": {
+        "recurrence_type": "AUTHORIZED_VULN_SCAN",
+        "expected_findings": 0,
+        "is_control": true
+      },
+      "expected_outcomes": {
+        "expected_findings": [],
+        "prohibited_adverse_rules": [
+          "POL-INV-001",
+          "POL-ESC-002",
+          "POL-COV-003",
+          "POL-KPI-004",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 0
+      },
+      "cse_id": "CSE-BANK-01",
+      "period_start": "2026-08-01T00:00:00Z",
+      "period_end": "2026-08-31T23:59:59Z",
+      "claims": [],
+      "assets": [
+        {"asset_id": "SRV-SCAN-TARGET-01", "hostname": "target01.bank.internal", "ip_address": "10.6.1.10", "criticality": "MEDIUM", "agent_status": "HEALTHY", "last_heartbeat": "2026-08-31T23:50:00Z"}
+      ],
+      "alerts": [
+        {"alert_id": "ALT-06-001", "timestamp": "2026-08-07T02:00:00Z", "asset_id": "SRV-SCAN-TARGET-01", "rule_id": "R-DET-PORT-SCAN", "severity": "LOW", "status": "CLOSED", "case_id": "CASE-06-001"},
+        {"alert_id": "ALT-06-002", "timestamp": "2026-08-14T02:00:00Z", "asset_id": "SRV-SCAN-TARGET-01", "rule_id": "R-DET-PORT-SCAN", "severity": "LOW", "status": "CLOSED", "case_id": "CASE-06-002"}
+      ],
+      "cases": [
+        {"case_id": "CASE-06-001", "severity": "LOW", "created_at": "2026-08-07T02:10:00Z", "closed_at": "2026-08-07T02:30:00Z", "resolution": "AUTHORIZED_SCAN", "analyst_id": "ANALYST-102", "investigation_notes": "Confirmed source IP matches authorized Qualys vulnerability scanner. Matched scan window.", "reopen_count": 0},
+        {"case_id": "CASE-06-002", "severity": "LOW", "created_at": "2026-08-14T02:10:00Z", "closed_at": "2026-08-14T02:35:00Z", "resolution": "AUTHORIZED_SCAN", "analyst_id": "ANALYST-102", "investigation_notes": "Confirmed source IP matches authorized Qualys vulnerability scanner. Matched scan window.", "reopen_count": 0}
+      ]
+    },
+    {
+      "scenario_id": "WORLD-07-OUTSOURCED-REMEDIATION",
+      "name": "Outsourced Remediation (MSSP Handoff & Right-Censoring)",
+      "latent_truth": {
+        "operating_model": "HYBRID_MSSP",
+        "right_censored": true,
+        "expected_findings": 0,
+        "is_control": true
+      },
+      "expected_outcomes": {
+        "expected_findings": [],
+        "prohibited_adverse_rules": [
+          "POL-INV-001",
+          "POL-ESC-002",
+          "POL-COV-003",
+          "POL-KPI-004",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 0
+      },
+      "cse_id": "CSE-BANK-01",
+      "period_start": "2026-08-01T00:00:00Z",
+      "period_end": "2026-08-31T23:59:59Z",
+      "claims": [],
+      "assets": [
+        {"asset_id": "SRV-BRANCH-ROUTER-01", "hostname": "router-br01.bank.internal", "ip_address": "10.7.1.1", "criticality": "HIGH", "agent_status": "HEALTHY", "last_heartbeat": "2026-08-31T23:40:00Z"}
+      ],
+      "alerts": [
+        {"alert_id": "ALT-07-001", "timestamp": "2026-08-30T16:00:00Z", "asset_id": "SRV-BRANCH-ROUTER-01", "rule_id": "R-DET-BGP-ANOMALY", "severity": "MEDIUM", "status": "HANDED_OFF", "case_id": "CASE-07-001"}
+      ],
+      "cases": [
+        {"case_id": "CASE-07-001", "severity": "MEDIUM", "created_at": "2026-08-30T16:30:00Z", "closed_at": null, "resolution": "PENDING_MSSP", "analyst_id": "ANALYST-TIER1", "investigation_notes": "Escalated to Managed Network Services provider ticket #NET-9912. Period ended while awaiting provider remediation.", "reopen_count": 0}
+      ]
+    },
+    {
+      "scenario_id": "WORLD-08-BIASED-SUBMISSION",
+      "name": "Biased Submission (Selective Filtering / Omitted Critical Alerts)",
+      "latent_truth": {
+        "bias": "SELECTIVE_LOG_OMISSION",
+        "expected_findings": 1,
+        "is_control": false
+      },
+      "manifest": {
+        "sources": [
+          {
+            "source_id": "src-claims",
+            "record_type": "claims",
+            "declared_row_count": 1,
+            "export_scope": "Claims",
+            "lineage": "Report",
+            "sampling_method": "full_population"
+          },
+          {
+            "source_id": "src-cases",
+            "record_type": "cases",
+            "declared_row_count": 1,
+            "export_scope": "Selective subset of low severity alerts only",
+            "lineage": "SIEM",
+            "sampling_method": "risk_targeted"
+          },
+          {
+            "source_id": "src-assets",
+            "record_type": "assets",
+            "declared_row_count": 1,
+            "export_scope": "Assets",
+            "lineage": "CMDB",
+            "sampling_method": "full_population"
+          }
+        ]
+      },
+      "expected_outcomes": {
+        "expected_findings": [
+          {
+            "rule_id": "POL-KPI-004",
+            "primary_object_id": "CLM-08",
+            "acceptable_states": ["insufficient_evidence"]
+          }
+        ],
+        "prohibited_adverse_rules": [
+          "POL-INV-001",
+          "POL-ESC-002",
+          "POL-COV-003",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 0
+      },
+      "cse_id": "CSE-BANK-01",
+      "period_start": "2026-08-01T00:00:00Z",
+      "period_end": "2026-08-31T23:59:59Z",
+      "claims": [
+        {"claim_id": "CLM-08", "claim_type": "sla_compliance", "metric_name": "incident_sla_compliance_pct", "claimed_value": 100.0}
+      ],
+      "assets": [
+        {"asset_id": "SRV-SWIFT-01", "hostname": "swift.bank.internal", "ip_address": "10.8.1.100", "criticality": "CRITICAL", "agent_status": "HEALTHY", "last_heartbeat": "2026-08-31T23:59:00Z"}
+      ],
+      "alerts": [
+        {"alert_id": "ALT-08-LOW-01", "timestamp": "2026-08-15T10:00:00Z", "asset_id": "SRV-SWIFT-01", "rule_id": "R-DET-BENIGN", "severity": "LOW", "status": "CLOSED", "case_id": "CASE-08-001"}
+      ],
+      "cases": [
+        {"case_id": "CASE-08-001", "severity": "LOW", "created_at": "2026-08-15T10:01:00Z", "closed_at": "2026-08-15T10:15:00Z", "resolution": "RESOLVED", "analyst_id": "ANALYST-105", "investigation_notes": "All critical alerts omitted from export; only trivial alerts included.", "reopen_count": 0}
+      ]
+    },
+    {
+      "scenario_id": "WORLD-09-GOOD-OPERATIONS-MISSING-EXPORTS",
+      "name": "Good Operations with Missing Exports (Classified UNKNOWN)",
+      "latent_truth": {
+        "operations": "SOUND",
+        "export_completeness": "PARTIAL_OPTIONAL_MISSING",
+        "expected_findings": 0,
+        "is_control": true
+      },
+      "expected_outcomes": {
+        "expected_findings": [],
+        "prohibited_adverse_rules": [
+          "POL-INV-001",
+          "POL-ESC-002",
+          "POL-COV-003",
+          "POL-KPI-004",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 0
+      },
+      "cse_id": "CSE-BANK-01",
+      "period_start": "2026-08-01T00:00:00Z",
+      "period_end": "2026-08-31T23:59:59Z",
+      "claims": [],
+      "assets": [
+        {"asset_id": "SRV-VAULT-01", "hostname": "vault01.bank.internal", "ip_address": "10.9.1.50", "criticality": "CRITICAL", "agent_status": "HEALTHY", "last_heartbeat": "2026-08-31T23:55:00Z"}
+      ],
+      "alerts": [
+        {"alert_id": "ALT-09-001", "timestamp": "2026-08-12T11:00:00Z", "asset_id": "SRV-VAULT-01", "rule_id": "R-DET-PRIV-ESC", "severity": "HIGH", "status": "CLOSED", "case_id": "CASE-09-001"}
+      ],
+      "cases": [
+        {"case_id": "CASE-09-001", "severity": "HIGH", "created_at": "2026-08-12T11:05:00Z", "closed_at": "2026-08-12T11:45:00Z", "resolution": "MITIGATED", "analyst_id": "ANALYST-106", "investigation_notes": "Remediation verified. Host network flow export table was omitted from submission package (correctly marked UNKNOWN, not operational failure).", "reopen_count": 0}
+      ]
+    },
+    {
+      "scenario_id": "WORLD-10-MULTI-PERIOD-DEGRADATION",
+      "name": "Multi-Period SLA Degradation",
+      "latent_truth": {
+        "trend": "DEGRADING",
+        "expected_findings": 1,
+        "is_control": false
+      },
+      "expected_outcomes": {
+        "expected_findings": [
+          {
+            "rule_id": "POL-KPI-004",
+            "primary_object_id": "CLM-10",
+            "acceptable_states": ["contradictory", "contradicted"]
+          },
+          {
+            "rule_id": "POL-ESC-002",
+            "primary_object_id": "CASE-10-001",
+            "acceptable_states": ["potential_concern"]
+          }
+        ],
+        "prohibited_adverse_rules": [
+          "POL-COV-003",
+          "POL-REC-005"
+        ],
+        "expected_adverse_findings_count": 2
+      },
+      "cse_id": "CSE-BANK-01",
+      "period_start": "2026-08-01T00:00:00Z",
+      "period_end": "2026-08-31T23:59:59Z",
+      "claims": [
+        {"claim_id": "CLM-10", "claim_type": "sla_compliance", "metric_name": "incident_sla_compliance_pct", "claimed_value": 99.0}
+      ],
+      "assets": [
+        {"asset_id": "SRV-PAY-GW-01", "hostname": "pay01.bank.internal", "ip_address": "10.10.1.25", "criticality": "CRITICAL", "agent_status": "HEALTHY", "last_heartbeat": "2026-08-31T23:50:00Z"}
+      ],
+      "alerts": [
+        {"alert_id": "ALT-10-001", "timestamp": "2026-08-20T08:00:00Z", "asset_id": "SRV-PAY-GW-01", "rule_id": "R-DET-RANSOMWARE", "severity": "CRITICAL", "status": "ESCALATED", "case_id": "CASE-10-001"}
+      ],
+      "cases": [
+        {"case_id": "CASE-10-001", "severity": "CRITICAL", "created_at": "2026-08-20T14:30:00Z", "closed_at": "2026-08-21T18:00:00Z", "resolution": "CONTAINED", "analyst_id": "ANALYST-108", "investigation_notes": "6.5 hour initial triage breach. Fourth successive month of SLA escalation degradation.", "reopen_count": 1}
+      ],
+      "escalations": []
+    }
+  ]
+}

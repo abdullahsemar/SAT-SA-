@@ -1,0 +1,11 @@
+[
+  {
+    "native_id": "CAS-801",
+    "created_at": "2026-01-05T12:00:00Z",
+    "closed_at": "2026-01-06T12:00:00Z",
+    "severity": "HIGH",
+    "status": "CLOSED",
+    "assigned_analyst": "analyst-12",
+    "root_cause": "SQL injection blocked"
+  }
+]

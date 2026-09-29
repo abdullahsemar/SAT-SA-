@@ -1,0 +1,78 @@
+{
+  "name": "sat-sa-network",
+  "version": "1.0.0",
+  "client": {
+    "organization": "RegulatorOrg",
+    "connection": {
+      "timeout": {
+        "peer": {
+          "endorser": "300"
+        },
+        "orderer": "300"
+      }
+    }
+  },
+  "channels": {
+    "sat-sa-channel": {
+      "orderers": [
+        "orderer.sat-sa.local"
+      ],
+      "peers": {
+        "peer0.regulator.nciipc.gov": {
+          "endorsingPeer": true,
+          "chaincodeQuery": true,
+          "ledgerQuery": true,
+          "eventSource": true
+        },
+        "peer0.supervised.bank01.org": {
+          "endorsingPeer": true,
+          "chaincodeQuery": true,
+          "ledgerQuery": true,
+          "eventSource": true
+        }
+      }
+    }
+  },
+  "organizations": {
+    "RegulatorOrg": {
+      "mspid": "RegulatorMSP",
+      "peers": [
+        "peer0.regulator.nciipc.gov"
+      ],
+      "certificateAuthorities": [
+        "ca.regulator.nciipc.gov"
+      ]
+    },
+    "SupervisedOrg": {
+      "mspid": "SupervisedMSP",
+      "peers": [
+        "peer0.supervised.bank01.org"
+      ],
+      "certificateAuthorities": [
+        "ca.supervised.bank01.org"
+      ]
+    }
+  },
+  "orderers": {
+    "orderer.sat-sa.local": {
+      "url": "grpcs://127.0.0.1:7050",
+      "tlsCACerts": {
+        "path": "deploy/ledger/crypto-config/ordererOrganizations/sat-sa.local/orderers/orderer.sat-sa.local/tls/ca.crt"
+      }
+    }
+  },
+  "peers": {
+    "peer0.regulator.nciipc.gov": {
+      "url": "grpcs://127.0.0.1:7051",
+      "tlsCACerts": {
+        "path": "deploy/ledger/crypto-config/peerOrganizations/regulator.nciipc.gov/peers/peer0.regulator.nciipc.gov/tls/ca.crt"
+      }
+    },
+    "peer0.supervised.bank01.org": {
+      "url": "grpcs://127.0.0.1:9051",
+      "tlsCACerts": {
+        "path": "deploy/ledger/crypto-config/peerOrganizations/supervised.bank01.org/peers/peer0.supervised.bank01.org/tls/ca.crt"
+      }
+    }
+  }
+}

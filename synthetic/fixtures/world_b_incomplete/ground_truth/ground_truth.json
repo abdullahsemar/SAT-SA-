@@ -1,0 +1,11 @@
+{
+  "scenario": "incomplete_export",
+  "entity_id": "CSE-BANK-01",
+  "expected_issues": [
+    "MALFORMED_TIMESTAMP",
+    "TIMESTAMP_OUT_OF_PERIOD",
+    "ORPHAN_REFERENCE",
+    "ROW_COUNT_MISMATCH",
+    "OPTIONAL_SOURCE_MISSING"
+  ]
+}

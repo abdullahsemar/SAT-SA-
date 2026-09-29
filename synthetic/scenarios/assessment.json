@@ -1,0 +1,260 @@
+{
+  "scenario_id": "SCENARIO-ASSESSMENT-01",
+  "description": "Synthetic multi-rule assessment dataset covering all 5 supervisory detector families, exceptions, quiet assets, and bounded KPI intervals",
+  "cse_id": "CSE-BANK-01",
+  "period_start": "2026-08-01T00:00:00Z",
+  "period_end": "2026-08-31T23:59:59Z",
+  "claims": [
+    {
+      "claim_id": "CLM-SLA-01",
+      "claim_type": "sla_compliance",
+      "metric_name": "incident_sla_compliance_pct",
+      "claimed_value": 98.0,
+      "period_start": "2026-08-01T00:00:00Z",
+      "period_end": "2026-08-31T23:59:59Z"
+    }
+  ],
+  "assets": [
+    {
+      "asset_id": "SRV-CORE-DB-01",
+      "hostname": "core-db-01.bank.internal",
+      "ip_address": "10.100.1.10",
+      "criticality": "CRITICAL",
+      "status": "ACTIVE",
+      "agent_status": "HEALTHY",
+      "last_heartbeat": "2026-08-31T23:45:00Z"
+    },
+    {
+      "asset_id": "SRV-PAY-API-02",
+      "hostname": "pay-api-02.bank.internal",
+      "ip_address": "10.100.2.15",
+      "criticality": "CRITICAL",
+      "status": "ACTIVE",
+      "agent_status": "UNHEALTHY",
+      "last_heartbeat": "2026-08-10T11:00:00Z"
+    },
+    {
+      "asset_id": "SRV-SWIFT-GW-01",
+      "hostname": "swift-gw-01.bank.internal",
+      "ip_address": "10.100.3.5",
+      "criticality": "CRITICAL",
+      "status": "ACTIVE",
+      "agent_status": null,
+      "last_heartbeat": null
+    },
+    {
+      "asset_id": "SRV-QUIET-VAULT-01",
+      "hostname": "vault-01.bank.internal",
+      "ip_address": "10.100.4.1",
+      "criticality": "CRITICAL",
+      "status": "ACTIVE",
+      "agent_status": "HEALTHY",
+      "last_heartbeat": "2026-08-31T23:55:00Z"
+    },
+    {
+      "asset_id": "SRV-RECUR-01",
+      "hostname": "recur-01.bank.internal",
+      "ip_address": "10.100.5.20",
+      "criticality": "HIGH",
+      "status": "ACTIVE",
+      "agent_status": "HEALTHY",
+      "last_heartbeat": "2026-08-31T23:50:00Z"
+    },
+    {
+      "asset_id": "SRV-EXC-MAINT-01",
+      "hostname": "maint-01.bank.internal",
+      "ip_address": "10.100.6.30",
+      "criticality": "HIGH",
+      "status": "ACTIVE",
+      "agent_status": "HEALTHY",
+      "last_heartbeat": "2026-08-31T23:50:00Z"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "CASE-FAST-NO-ARTIFACTS",
+      "title": "Suspicious login attempt",
+      "severity": "MEDIUM",
+      "status": "CLOSED",
+      "created_at": "2026-08-05T10:00:00Z",
+      "closed_at": "2026-08-05T10:00:20Z",
+      "disposition": null,
+      "assigned_to": "analyst1"
+    },
+    {
+      "case_id": "CASE-FAST-WITH-ARTIFACTS",
+      "title": "Automated scanner activity",
+      "severity": "LOW",
+      "status": "CLOSED",
+      "created_at": "2026-08-05T11:00:00Z",
+      "closed_at": "2026-08-05T11:00:30Z",
+      "disposition": "BENIGN_SCANNER_VERIFIED",
+      "assigned_to": "analyst2"
+    },
+    {
+      "case_id": "CASE-OVERDUE-ESCALATION",
+      "title": "Critical database unauthorized modification",
+      "severity": "CRITICAL",
+      "status": "OPEN",
+      "created_at": "2026-08-10T08:00:00Z",
+      "disposition": null,
+      "assigned_to": "analyst1"
+    },
+    {
+      "case_id": "CASE-NOT-YET-DUE-AT-CUTOFF",
+      "title": "Late period escalation",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "created_at": "2026-08-31T23:30:00Z",
+      "disposition": null,
+      "assigned_to": "analyst3"
+    },
+    {
+      "case_id": "CASE-EXCUSED-EXCEPTION",
+      "title": "Scheduled pen test alert",
+      "severity": "CRITICAL",
+      "status": "OPEN",
+      "created_at": "2026-08-15T12:00:00Z",
+      "disposition": null,
+      "assigned_to": "analyst2"
+    },
+    {
+      "case_id": "CASE-RECUR-A",
+      "title": "High memory consumption on recur server",
+      "severity": "MEDIUM",
+      "status": "CLOSED",
+      "created_at": "2026-08-02T10:00:00Z",
+      "closed_at": "2026-08-02T12:00:00Z",
+      "disposition": "RESOLVED_TEMP_CLEANUP",
+      "assigned_to": "analyst1"
+    },
+    {
+      "case_id": "CASE-RECUR-B",
+      "title": "Repeated memory spike on recur server",
+      "severity": "MEDIUM",
+      "status": "CLOSED",
+      "created_at": "2026-08-12T10:00:00Z",
+      "closed_at": "2026-08-12T11:00:00Z",
+      "disposition": "RESOLVED_SERVICE_RESTART",
+      "assigned_to": "analyst2"
+    }
+  ],
+  "alerts": [
+    {
+      "alert_id": "ALT-PAY-01",
+      "asset_id": "SRV-PAY-API-02",
+      "title": "Payment gateway latency threshold exceeded",
+      "severity": "LOW",
+      "created_at": "2026-08-10T10:00:00Z"
+    },
+    {
+      "alert_id": "ALT-REC-01",
+      "asset_id": "SRV-RECUR-01",
+      "title": "Process memory spike",
+      "severity": "MEDIUM",
+      "created_at": "2026-08-02T09:50:00Z"
+    },
+    {
+      "alert_id": "ALT-REC-02",
+      "asset_id": "SRV-RECUR-01",
+      "title": "Process memory spike",
+      "severity": "MEDIUM",
+      "created_at": "2026-08-12T09:50:00Z"
+    },
+    {
+      "alert_id": "ALT-REC-03",
+      "asset_id": "SRV-RECUR-01",
+      "title": "Process memory spike",
+      "severity": "MEDIUM",
+      "created_at": "2026-08-22T09:50:00Z"
+    },
+    {
+      "alert_id": "ALT-EXC-01",
+      "asset_id": "SRV-EXC-MAINT-01",
+      "title": "Scheduled maintenance reboot alert",
+      "severity": "MEDIUM",
+      "created_at": "2026-08-16T01:00:00Z"
+    },
+    {
+      "alert_id": "ALT-EXC-02",
+      "asset_id": "SRV-EXC-MAINT-01",
+      "title": "Scheduled maintenance reboot alert",
+      "severity": "MEDIUM",
+      "created_at": "2026-08-17T01:00:00Z"
+    },
+    {
+      "alert_id": "ALT-EXC-03",
+      "asset_id": "SRV-EXC-MAINT-01",
+      "title": "Scheduled maintenance reboot alert",
+      "severity": "MEDIUM",
+      "created_at": "2026-08-18T01:00:00Z"
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "ACT-FAST-WITH-ARTIFACTS-01",
+      "case_id": "CASE-FAST-WITH-ARTIFACTS",
+      "action_type": "triage_notes",
+      "created_at": "2026-08-05T11:00:15Z",
+      "created_by": "analyst2",
+      "details": {
+        "notes": "Verified source IP belongs to authorized external scanner."
+      }
+    },
+    {
+      "action_id": "ACT-OVERDUE-DUP-01",
+      "case_id": "CASE-OVERDUE-ESCALATION",
+      "action_type": "escalation_attempt",
+      "created_at": "2026-08-11T14:00:00Z",
+      "created_by": "analyst1",
+      "details": {
+        "channel": "email"
+      }
+    },
+    {
+      "action_id": "ACT-OVERDUE-DUP-02",
+      "case_id": "CASE-OVERDUE-ESCALATION",
+      "action_type": "escalation_attempt",
+      "created_at": "2026-08-11T14:05:00Z",
+      "created_by": "analyst1",
+      "details": {
+        "channel": "slack"
+      }
+    }
+  ],
+  "case_alert_links": [
+    {
+      "case_id": "CASE-RECUR-A",
+      "alert_id": "ALT-REC-01"
+    },
+    {
+      "case_id": "CASE-RECUR-B",
+      "alert_id": "ALT-REC-02"
+    }
+  ],
+  "exceptions": [
+    {
+      "native_id": "EXC-CASE-1",
+      "policy_reference": "POL-ESC-002",
+      "affected_scope": "case:CASE-EXCUSED-EXCEPTION",
+      "approved_by": "Synthetic CISO",
+      "valid_from": "2026-08-01T00:00:00Z",
+      "valid_to": "2026-09-01T00:00:00Z",
+      "expiry_date": "2026-09-01T00:00:00Z",
+      "status": "APPROVED",
+      "reason": "Explicit approved synthetic exercise"
+    },
+    {
+      "native_id": "EXC-ASSET-1",
+      "policy_reference": "POL-REC-005",
+      "affected_scope": "asset:SRV-EXC-MAINT-01",
+      "approved_by": "Synthetic CISO",
+      "valid_from": "2026-08-01T00:00:00Z",
+      "valid_to": "2026-09-01T00:00:00Z",
+      "expiry_date": "2026-09-01T00:00:00Z",
+      "status": "APPROVED",
+      "reason": "Explicit approved synthetic exercise",
+      "remediation_owner": "External Cloud Provider"
+    }
+  ]
+}

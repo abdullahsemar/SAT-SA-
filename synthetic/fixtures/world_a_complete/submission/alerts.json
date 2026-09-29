@@ -1,0 +1,29 @@
+[
+  {
+    "native_id": "ALT-1001",
+    "timestamp": "2026-01-05T08:00:00Z",
+    "title": "Multiple Failed Authentication Attempts",
+    "severity": "HIGH",
+    "source_tool": "SIEM",
+    "affected_asset_id": "AST-002",
+    "triage_status": "ESCALATED"
+  },
+  {
+    "native_id": "ALT-1002",
+    "timestamp": "2026-01-05T08:15:00Z",
+    "title": "Suspicious PowerShell Execution",
+    "severity": "CRITICAL",
+    "source_tool": "EDR",
+    "affected_asset_id": "AST-001",
+    "triage_status": "ESCALATED"
+  },
+  {
+    "native_id": "ALT-1003",
+    "timestamp": "2026-01-12T14:00:00Z",
+    "title": "Anomalous Outbound Data Transfer",
+    "severity": "MEDIUM",
+    "source_tool": "NDR",
+    "affected_asset_id": "AST-003",
+    "triage_status": "CLOSED"
+  }
+]

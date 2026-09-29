@@ -1,0 +1,38 @@
+{
+  "policy_version": "demo-v1",
+  "name": "Supervisory Baseline SOC Policy",
+  "description": "Standard supervisory policy governing investigation rigor, escalation timelines, monitoring coverage, and KPI verification.",
+  "investigation": {
+    "artifact_obligations": {
+      "CRITICAL": {
+        "required_actions": ["HOST_ISOLATION", "FORENSIC_TRIAGE"],
+        "require_artifact_hash": true
+      },
+      "HIGH": {
+        "required_actions": ["FORENSIC_TRIAGE"],
+        "require_artifact_hash": false
+      }
+    },
+    "speed_penalty_disabled": true
+  },
+  "escalation": {
+    "sla_seconds": {
+      "CRITICAL": 1800,
+      "HIGH": 7200,
+      "MEDIUM": 86400,
+      "LOW": 604800
+    },
+    "eligible_severities": ["CRITICAL", "HIGH"]
+  },
+  "monitoring_coverage": {
+    "required_criticality": ["CRITICAL", "HIGH"],
+    "minimum_observed_eps": 1.0
+  },
+  "kpi_claims": {
+    "escalation_compliance_metric": "ESCALATION_SLA_COMPLIANCE_RATE"
+  },
+  "recurrence": {
+    "window_days": 14,
+    "require_common_asset": true
+  }
+}

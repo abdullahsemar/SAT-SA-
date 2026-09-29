@@ -1,0 +1,4 @@
+native_id,hostname,ip_address,criticality,owner,environment,timestamp
+AST-001,core-banking-01,10.0.1.15,CRITICAL,Core Banking Team,PROD,2026-01-02T12:00:00Z
+AST-002,auth-gateway-01,10.0.1.20,HIGH,IAM Operations,PROD,2026-01-02T12:00:00Z
+AST-003,vpn-concentrator-02,10.0.2.5,HIGH,Network Ops,PROD,2026-01-03T12:00:00Z

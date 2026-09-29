@@ -1,0 +1,29 @@
+[
+  {
+    "native_id": "AST-001",
+    "hostname": "core-banking-01",
+    "ip_address": "10.0.1.15",
+    "criticality": "CRITICAL",
+    "owner": "Core Banking Team",
+    "environment": "PROD",
+    "timestamp": "2026-01-02T12:00:00Z"
+  },
+  {
+    "native_id": "AST-002",
+    "hostname": "auth-gateway-01",
+    "ip_address": "10.0.1.20",
+    "criticality": "HIGH",
+    "owner": "IAM Operations",
+    "environment": "PROD",
+    "timestamp": "2026-01-02T12:00:00Z"
+  },
+  {
+    "native_id": "AST-003",
+    "hostname": "vpn-concentrator-02",
+    "ip_address": "10.0.2.5",
+    "criticality": "HIGH",
+    "owner": "Network Ops",
+    "environment": "PROD",
+    "timestamp": "2026-01-03T12:00:00Z"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "manifest_version": "1.0.0",
+  "entity_id": "CSE-BANK-01",
+  "period_start": "2026-01-01T00:00:00Z",
+  "period_end": "2026-02-01T00:00:00Z",
+  "source_timezone": "UTC",
+  "sources": [
+    {
+      "source_id": "src-alerts-csv",
+      "record_type": "alerts",
+      "declared_row_count": 3,
+      "export_scope": "Alerts",
+      "lineage": "SIEM",
+      "sampling_method": "full_population",
+      "is_optional": false
+    }
+  ]
+}

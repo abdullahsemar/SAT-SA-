@@ -1,0 +1,23 @@
+OrdererOrgs:
+  - Name: Orderer
+    Domain: sat-sa.local
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: orderer
+
+PeerOrgs:
+  - Name: Regulator
+    Domain: regulator.nciipc.gov
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+
+  - Name: Supervised
+    Domain: supervised.bank01.org
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+    Users:
+      Count: 1

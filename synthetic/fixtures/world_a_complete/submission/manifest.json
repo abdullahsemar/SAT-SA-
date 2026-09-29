@@ -1,0 +1,54 @@
+{
+  "manifest_version": "1.0.0",
+  "entity_id": "CSE-BANK-01",
+  "period_start": "2026-01-01T00:00:00Z",
+  "period_end": "2026-02-01T00:00:00Z",
+  "source_timezone": "UTC",
+  "sources": [
+    {
+      "source_id": "src-assets-csv",
+      "record_type": "assets",
+      "declared_row_count": 3,
+      "export_scope": "Full IT Assets",
+      "lineage": "CMDB -> CSV Export",
+      "sampling_method": "full_population",
+      "is_optional": false
+    },
+    {
+      "source_id": "src-alerts-csv",
+      "record_type": "alerts",
+      "declared_row_count": 3,
+      "export_scope": "All Security Alerts",
+      "lineage": "SIEM Cluster -> CSV Export",
+      "sampling_method": "full_population",
+      "is_optional": false
+    },
+    {
+      "source_id": "src-cases-json",
+      "record_type": "cases",
+      "declared_row_count": 1,
+      "export_scope": "All Investigated Cases",
+      "lineage": "SOAR -> JSON Export",
+      "sampling_method": "full_population",
+      "is_optional": false
+    },
+    {
+      "source_id": "src-links-json",
+      "record_type": "case_alert_links",
+      "declared_row_count": 2,
+      "export_scope": "Case-Alert Relational Links",
+      "lineage": "SOAR Link Table -> JSON",
+      "sampling_method": "full_population",
+      "is_optional": false
+    },
+    {
+      "source_id": "src-coverage-json",
+      "record_type": "coverage_observations",
+      "declared_row_count": 2,
+      "export_scope": "Sensor EPS Observations",
+      "lineage": "Health Monitor -> JSON",
+      "sampling_method": "full_population",
+      "is_optional": false
+    }
+  ]
+}
